@@ -33,15 +33,25 @@
     display: block;
 }
 
+.isShow{
+    transition: height 2s; 
+    height: auto;
+}
+
+.isNone{
+    transition: height 2s; 
+    height: 0;
+}
+
 .menu{
     position: absolute;
-    left:0;
-    width: 100%;
+    width: 307px;
     background: #EAE1E1;
-    top: 45px;
+    top: 50px;
     color:#CBA9A9;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-    z-index: 5000;  
+    z-index: 5000;
+    transition: height 2s; 
 }
 
 ul,li{
@@ -60,3 +70,22 @@ ul{
     overflow: auto;
 }
 
+.color{
+    color: #333;
+}
+
+.option:hover{
+    background: #666;
+}
+
+.text{
+    width: 270px;
+    height: 100%;
+    font-size:120%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 7px;
+    padding-left: 5px;
+    /* z-index: -5000000; */
+}

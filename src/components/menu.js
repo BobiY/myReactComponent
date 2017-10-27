@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 
-class Option extends Component{
+
+export default class Option extends Component{
     constructor(props){
         super()
         this.handleClick = this.handleClick.bind(this);
@@ -11,21 +12,23 @@ class Option extends Component{
     }
     
     handleClick(){
-        console.log("click")
+        const { key,value } = this.state;
+        this.props.onclick(key,value);
     }
 
     render(){
-        const { value } = this.props;
+        const { value,isSelected } = this.props;
+        const claName = isSelected ? "option color" : "option"
         return (
-            <li className = "option" onClick = { this.handleClick }>
-                <span>{ value.value }</span>
+            <li className = { claName } onClick = { this.handleClick }>
+                <span>{ this.props.children }</span>
             </li>
         )
     }
     componentDidMount(){
-        const { value,key } = this.props.value;
+        const { children,keys } = this.props;
         this.setState({
-            key,value
+            key:keys,value:children
         })
     }
 }
@@ -35,36 +38,8 @@ class Option extends Component{
 
 
 
-export default class Menu extends Component{
-    constructor(props){
-        super()
-    }
-    
-    renderOption(){
-        const arr = [];
-        for( let i = 0; i< 10; i++ ){
-            arr[i] = {
-                key:i,
-                value:`我是${i}`
-            }
-        }
 
-        return  arr.map( ( val ) => <Option key = { val.key } value = { val } /> )
-    }
-    
-    render(){
-        const { show } = this.props;
-        return (
-            <div className = "menu" style = {{ display:show }}>
-                <ul>
-                    { this.renderOption() }
-                </ul>
-            </div>
-        )
-    }
-    componentDidMount(){
-        //console.log(this.refs.option)
-    }
-}
+
+
 
 
